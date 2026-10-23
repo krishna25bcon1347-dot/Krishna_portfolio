@@ -35,32 +35,45 @@
 
     <section id="projects" aria-labelledby="projects-heading">
       <h2 id="projects-heading">Projects</h2>
+      <div class="project-tools" role="search" aria-label="Search and filter projects">
+        <label class="sr-only" for="projectSearch">Search projects by name or technology</label>
+        <input id="projectSearch" type="search" placeholder="Search by project or technology (e.g. Python, Quiz, Book)" autocomplete="off">
+        <label class="sr-only" for="projectFilter">Filter projects by technology</label>
+        <select id="projectFilter" aria-label="Filter projects by technology">
+          <option value="all">All technologies</option>
+          <option value="python">Python</option>
+          <option value="web">Web</option>
+          <option value="algorithms">Algorithms</option>
+          <option value="books">Books & Reading</option>
+        </select>
+        <p id="projectResults" class="project-results" aria-live="polite">Showing all projects.</p>
+      </div>
       <ul>
-        <li>
+        <li class="project-item" data-search="python algorithms fibonacci dynamic programming recursion optimization" data-category="algorithms">
           <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1380-fibonacci">FIBONACCI</a>
           — The Fibonacci Sequence Optimizer is a high-performance algorithmic project designed to explore, benchmark, and compare different computational approaches for generating Fibonacci numbers. Moving beyond standard naive recursion, this project demonstrates optimization techniques including Memoization (Top-Down DP), Tabulation (Bottom-Up DP), and Matrix Exponentiation. Built with a focus on algorithmic complexity and time-space trade-offs, it highlights efficient problem-solving principles essential for robust software engineering.
         </li>
-        <li>
+        <li class="project-item" data-search="python algorithms factorial recursion iteration large numbers" data-category="algorithms">
           <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1380-factorial">FACTORIAL</a>
           — The Factorial Computation & Large Number Analyzer is a robust algorithmic project designed to explore efficient ways to compute factorials and handle large integer overflows. While basic factorial calculation is straightforward, this project dives deeper into iterative vs. recursive paradigms, tail-call optimization, and precision handling for extremely large numbers (beyond standard integer limits) using custom array-based multiplication logic
         </li>
-        <li>
+        <li class="project-item" data-search="python data serialization dictionary dict struct json" data-category="python">
           <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1347-struct-to-dict">STRUCT TO DICT</a>
           — The Struct-to-Dict Utility is a lightweight, high-performance data serialization tool designed to seamlessly convert complex objects, custom data structures, and dataclasses into standard Python dictionaries—and vice versa. Built to bridge the gap between object-oriented data models and external data formats like JSON, API payloads, or configuration files, this project streamlines data management and preprocessing workflows.
         </li>
-        <li>
+        <li class="project-item" data-search="web books reading list book management" data-category="books">
           <a href="https://github.com/krishna25bcon1347-dot/books_reading_list">READING LIST</a>
           — The Personal Reading List & Book Management Hub is a dynamic web application designed to help users curate, track, and organize their reading journeys. Built with a clean user interface and robust state management, this application allows users to catalog books, track reading status (e.g., Want to Read, Currently Reading, Completed), categorize genres, and maintain a seamless digital bookshelf.
         </li>
-        <li>
+        <li class="project-item" data-search="python debugging bug fixing analyzer errors" data-category="python">
           <a href="https://github.com/krishna25bcon1347-dot/correcting-grade-25BCON1347">BUG FIXING IN PYTHON</a>
           — The Automated Bug Analyzer & Debugging Assistant is a developer-focused utility designed to parse complex error tracebacks, diagnose root causes of runtime and syntax exceptions, and suggest or automatically apply code fixes. By streamlining the debugging workflow, this tool helps developers quickly isolate bugs, understand stack traces, and implement robust error-handling mechanisms across their codebase.
         </li>
-        <li>
+        <li class="project-item" data-search="python code cleaner refactoring pep8 ast" data-category="python">
           <a href="https://github.com/krishna25bcon1347-dot/messy-python-code">MESSY PYTHON CODE</a>
           — The Messy Python Code Cleaner & Refactoring Utility is an automated script and code-quality tool designed to transform unstructured, poorly formatted, or 'messy' Python code into clean, PEP 8-compliant, and maintainable codebases. Utilizing Python's powerful built-in AST (Abstract Syntax Tree) parsing and regex pattern matching, this project automates the tedious process of fixing inconsistent indentation, removing dead code, cleaning up unused imports, and standardizing coding styles across scripts.
         </li>
-        <li>
+        <li class="project-item" data-search="web quiz application questions answers quiz platform" data-category="web">
           <a href="https://github.com/krishna25bcon1347-dot/QUIZ-PE">QUIZ</a>
           — The Quiz Application is a web-based quiz platform designed to engage users with interactive question-and-answer sessions. Built with a clean user interface and robust question management system, this application allows users to create quizzes, track progress, and evaluate their knowledge on a variety of topics.
         </li>
@@ -119,9 +132,51 @@
   <footer>
     <p>Contact: krishna.kanwar7126@gmail.com</p>
   </footer>
-  <button id="themeToggle">Switch to Dark Mode</button>
+  <button id="themeToggle" type="button" aria-pressed="false">Switch to Dark Mode</button>
   <script src="script.js"></script>
   <script src="config.js"></script>
   <script src="chatbot.js"></script>
+
+  <script>
+    (() => {
+      const searchInput = document.getElementById("projectSearch");
+      const filterSelect = document.getElementById("projectFilter");
+      const resultsLabel = document.getElementById("projectResults");
+      const projectItems = Array.from(document.querySelectorAll("#projects .project-item"));
+
+      function filterProjects() {
+        const query = (searchInput.value || "").trim().toLowerCase();
+        const category = filterSelect.value;
+        let visible = 0;
+        projectItems.forEach((item) => {
+          const searchableText = [item.textContent, item.dataset.search || "", item.dataset.category || ""].join(" ").toLowerCase();
+          const matchesQuery = !query || searchableText.includes(query);
+          const matchesCategory = category === "all" || item.dataset.category === category;
+          item.hidden = !(matchesQuery && matchesCategory);
+          if (!item.hidden) visible++;
+        });
+        resultsLabel.textContent = visible === 0
+          ? "No projects found. Try another name or technology."
+          : `Showing ${visible} of ${projectItems.length} projects.`;
+      }
+
+      searchInput.addEventListener("input", filterProjects);
+      filterSelect.addEventListener("change", filterProjects);
+
+      const themeToggle = document.getElementById("themeToggle");
+      let savedTheme = null;
+      try { savedTheme = localStorage.getItem("portfolio-theme"); } catch (_) {}
+      function setTheme(isDark) {
+        document.body.classList.toggle("dark-mode", isDark);
+        themeToggle.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        try { localStorage.setItem("portfolio-theme", isDark ? "dark" : "light"); } catch (_) {}
+      }
+      setTheme(savedTheme === "dark");
+      themeToggle.addEventListener("click", () => setTheme(!document.body.classList.contains("dark-mode")));
+      filterProjects();
+    })();
+  </script>
+
 </body>
 </html>

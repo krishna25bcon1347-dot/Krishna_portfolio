@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krishna Kanwar — Personal Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+  <header>
+    <h1>KRISHNA KANWAR</h1>
+    <p class="tagline">AI & Machine Learning Undergraduate | Building Intelligent Multi-Agent Workflows & Data-Driven Solutions</p>
+  </header>
+
+  <main>
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>
+        I am an undergraduate Computer Science student specializing in Artificial Intelligence and Machine Learning, with a strong focus on building intelligent multi-agent workflows, Python automation, and data-driven solutions. Based in Jaipur, India, I enjoy solving complex problems through clean code, exploring modern AI architectures, and continuously turning innovative concepts into scalable, real-world projects.
+      </p>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <ul>
+        <li>C++</li>
+  
+        <li>C</li>
+        <li>Python</li>
+        <li>Agentic AI</li>
+        <li>DSA</li>
+      </ul>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1380-fibonacci">FIBONACCI</a>
+          — The Fibonacci Sequence Optimizer is a high-performance algorithmic project designed to explore, benchmark, and compare different computational approaches for generating Fibonacci numbers. Moving beyond standard naive recursion, this project demonstrates optimization techniques including Memoization (Top-Down DP), Tabulation (Bottom-Up DP), and Matrix Exponentiation. Built with a focus on algorithmic complexity and time-space trade-offs, it highlights efficient problem-solving principles essential for robust software engineering.
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1380-factorial">FACTORIAL</a>
+          — The Factorial Computation & Large Number Analyzer is a robust algorithmic project designed to explore efficient ways to compute factorials and handle large integer overflows. While basic factorial calculation is straightforward, this project dives deeper into iterative vs. recursive paradigms, tail-call optimization, and precision handling for extremely large numbers (beyond standard integer limits) using custom array-based multiplication logic
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/python-basics-25BCON1347-struct-to-dict">STRUCT TO DICT</a>
+          — The Struct-to-Dict Utility is a lightweight, high-performance data serialization tool designed to seamlessly convert complex objects, custom data structures, and dataclasses into standard Python dictionaries—and vice versa. Built to bridge the gap between object-oriented data models and external data formats like JSON, API payloads, or configuration files, this project streamlines data management and preprocessing workflows.
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/books_reading_list">READING LIST</a>
+          — The Personal Reading List & Book Management Hub is a dynamic web application designed to help users curate, track, and organize their reading journeys. Built with a clean user interface and robust state management, this application allows users to catalog books, track reading status (e.g., Want to Read, Currently Reading, Completed), categorize genres, and maintain a seamless digital bookshelf.
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/correcting-grade-25BCON1347">BUG FIXING IN PYTHON</a>
+          — The Automated Bug Analyzer & Debugging Assistant is a developer-focused utility designed to parse complex error tracebacks, diagnose root causes of runtime and syntax exceptions, and suggest or automatically apply code fixes. By streamlining the debugging workflow, this tool helps developers quickly isolate bugs, understand stack traces, and implement robust error-handling mechanisms across their codebase.
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/messy-python-code">MESSY PYTHON CODE</a>
+          — The Messy Python Code Cleaner & Refactoring Utility is an automated script and code-quality tool designed to transform unstructured, poorly formatted, or 'messy' Python code into clean, PEP 8-compliant, and maintainable codebases. Utilizing Python's powerful built-in AST (Abstract Syntax Tree) parsing and regex pattern matching, this project automates the tedious process of fixing inconsistent indentation, removing dead code, cleaning up unused imports, and standardizing coding styles across scripts.
+        </li>
+        <li>
+          <a href="https://github.com/krishna25bcon1347-dot/QUIZ-PE">QUIZ</a>
+          — The Quiz Application is a web-based quiz platform designed to engage users with interactive question-and-answer sessions. Built with a clean user interface and robust question management system, this application allows users to create quizzes, track progress, and evaluate their knowledge on a variety of topics.
+        </li>
+      </ul>
+    </section>
+  </main>
+  <section id="weather">
+    <h2>Weather</h2>
+
+    <input
+        type="text"
+        id="cityInput"
+        placeholder="Enter a city"
+    >
+
+    <button id="weatherButton">
+        Get Weather
+    </button>
+
+    <div id="weatherResult">
+        Enter a city to see the weather.
+    </div>
+</section>
+<section id="aiChatSection" class="ai-chat">
+  <h2>Ask My AI Assistant</h2>
+
+  <p>
+    Ask questions about this portfolio,
+    projects, and technologies.
+  </p>
+
+  <div
+    id="chatMessages"
+    aria-live="polite"
+  ></div>
+
+  <div class="chat-controls">
+    <input
+      type="text"
+      id="userInput"
+      placeholder="Ask a question..."
+    />
+
+    <button id="sendButton" type="button">
+      Send
+    </button>
+  </div>
+
+  <p id="chatStatus" role="status"></p>
+
+  <p class="chat-note">
+    AI chat is available during the local
+    classroom demonstration only.
+  </p>
+</section>
+  <footer>
+    <p>Contact: krishna.kanwar7126@gmail.com</p>
+  </footer>
+  <button id="themeToggle">Switch to Dark Mode</button>
+  <script src="script.js"></script>
+  <script src="config.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>

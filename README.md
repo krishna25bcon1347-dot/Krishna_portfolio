@@ -4,7 +4,7 @@ A personal portfolio for Krishna Kanwar, a computer science undergraduate specia
 
 ## Live site
 
-[View Krishna's portfolio](https://portfolio-five-ruby-87.vercel.app/)
+[View Krishna's portfolio](https://krishnaportfolio-nine.vercel.app/)
 
 ## About
 

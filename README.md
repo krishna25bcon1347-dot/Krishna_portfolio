@@ -7,6 +7,11 @@ A personal portfolio for Krishna Kanwar, a computer science undergraduate specia
 [View Krishna's portfolio]
 (https://krishnaportfolio-nine.vercel.app/)
 
+##Screenshots
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/87b641cb-439c-447c-9cdd-ca1d60083a08" />
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/1967166e-60d3-4b1b-b3ce-b2ada10d5d31" />
+
+
 ## About
 
 Based in Jaipur, India, Krishna is interested in intelligent multi-agent workflows, Python automation, and data-driven solutions. The portfolio highlights a focus on problem-solving, AI, and practical software projects.
